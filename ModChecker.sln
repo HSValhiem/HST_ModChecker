@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModChecker", "ModChecker\ModChecker.csproj", "{1C44480E-B1FE-4934-B518-4E57D69BB6B5}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ModCheckerExample", "ModCheckerExample\ModCheckerExample.pyproj", "{AE320652-AD88-45A8-AFAA-8C831E4782C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C44480E-B1FE-4934-B518-4E57D69BB6B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C44480E-B1FE-4934-B518-4E57D69BB6B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C44480E-B1FE-4934-B518-4E57D69BB6B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C44480E-B1FE-4934-B518-4E57D69BB6B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE320652-AD88-45A8-AFAA-8C831E4782C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE320652-AD88-45A8-AFAA-8C831E4782C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C9CC1C4D-F27E-492E-A50B-F7DDAA5AC848}
+	EndGlobalSection
+EndGlobal
