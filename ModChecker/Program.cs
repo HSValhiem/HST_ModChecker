@@ -1,4 +1,5 @@
 ﻿using Mono.Cecil;
+using System.Text.Json;
 
 class Program
 {
@@ -6,12 +7,22 @@ class Program
     {
         if (args.Length > 0)
         {
-            string filePath = args[0];
-            AssemblyDefinition ass = AssemblyDefinition.ReadAssembly(filePath);
-            List<TypeReference> typeReferences = new List<TypeReference>();
-            List<string> typeNamesToCheck = new List<string> { "ZNet", "ZRpc", "ZRoutedRpc", "ZPackage" };
-
+            List<string> typeNamesToCheck;
+            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "typeNames.json");
+            AssemblyDefinition ass = AssemblyDefinition.ReadAssembly(args[0]);
             string found = "false";
+
+            try
+            {
+                string jsonContent = File.ReadAllText(jsonFilePath);
+                typeNamesToCheck = JsonSerializer.Deserialize<List<string>>(jsonContent);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reading JSON file: {ex.Message}");
+                typeNamesToCheck = new List<string>();
+            }
+
             foreach (TypeReference typeReference in ass.MainModule.GetTypeReferences())
             {
                 if (typeNamesToCheck.Contains(typeReference.Name))
@@ -25,7 +36,7 @@ class Program
         }
         else
         {
-            Console.WriteLine("Please provide a file path as an argument.");
+            Console.WriteLine("error: Please provide a file path as an argument.");
         }
 
     }
