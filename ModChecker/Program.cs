@@ -15,22 +15,24 @@ class Program
             try
             {
                 string jsonContent = File.ReadAllText(jsonFilePath);
+#pragma warning disable CS8600
                 typeNamesToCheck = JsonSerializer.Deserialize<List<string>>(jsonContent);
+#pragma warning restore CS8600
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error reading JSON file: {ex.Message}");
-                typeNamesToCheck = new List<string>();
+                Console.WriteLine($"error: Cannot read JSON file: {ex.Message}");
+                typeNamesToCheck = new List<string>()
+                {
+                    "ZNet",
+                    "ZRpc",
+                    "ZRoutedRpc",
+                    "ZPackage"
+                };
             }
 
-            foreach (TypeReference typeReference in ass.MainModule.GetTypeReferences())
-            {
-                if (typeNamesToCheck.Contains(typeReference.Name))
-                {
-                    found = "true";
-                    break;
-                }
-            }
+            found = ass.MainModule.GetTypeReferences().Any(typeReference => typeNamesToCheck != null && typeNamesToCheck.Contains(typeReference.Name)) ? "true" : "false";
+
             Console.Write(found);
 
         }
